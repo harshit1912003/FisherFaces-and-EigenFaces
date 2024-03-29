@@ -1,0 +1,10 @@
+Inferences:
+
+for EigenFaces we choose "k best EVs", which cover almost 95% of variation
+for FisherFaces we choose c-1, c = number of classes
+
+1. EigenFaces and FisherFaces Algorithm perform exceptionally well on 1st dataset (10*10 images of 10 individuals; less lightning variation; less expression variation; variation in camera angle). The accuracy is almost similar (~90%)
+2. On a dataset of 2*64 images of 2 individuals under varying lightining conditions, the FisherFaces algorithm outperforms EigenFaces algorithm by a large margin. The accuracy of EigenFaces is almost 50% while that of FisherFaces is almost 90%
+3. We werent able to observe the supposed outperformance of FisherFaces algorithm over EigenFaces algorithm for specs/glasses detection. We tried with 2 different datasets:
+    3.a. 2*67 images of different individuals with and without glasses. Here the EigenFaces algorithm outperformed FisherFaces algorithm, this might be because there were a lot of images of individuals who were mutually exclusive to a single class and c-1 is 1, which means FLD seperates the images in 1-D whereas PCA seperates the images in k dim
+    3.b. 2*15 images of different individuals, for each individual we had an image in both the classes. However the images from the dataset were not properly cropped and centered. Even after manually cropping each image and resizing them to same dimensions, we got equally subpar performance with both the algorithms. This might be because of small dataset and/or wrong cropping 
